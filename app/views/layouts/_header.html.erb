@@ -1,12 +1,6 @@
 <header>
-  <div>
-    <nav>
-      <ul>
-        <% if user_signed_in? then %>
-          <li><%= link_to "edit profile", edit_user_path(current_user.id) %></li>
-          <li><%= link_to "sign out", destroy_user_session_path, method: :delete %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
+  <% if user_signed_in? then %>
+    <%= link_to "[プロフィール]", edit_user_path(current_user.id) %>
+    <%= link_to "[ログアウト]", destroy_user_session_path, method: :delete %>
+  <% end %>
 </header>
