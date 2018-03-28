@@ -1,4 +1,4 @@
-<% provide(:title, 'Profile') %>
+<% provide(:title, 'プロフィール') %>
 <h1>Users#edit</h1>
 
 <%= form_for(@user) do |f| %>
@@ -6,5 +6,5 @@
   <%= f.date_field :date_of_birth %><br>
   <%= f.select :gender, User.genders.keys.to_a, {} %><br>
   <%= f.text_field :school %><br>
-  <%= f.submit "Update my profile" %><br>
+  <%= f.submit "プロフィールを更新" %><br>
 <% end %>
