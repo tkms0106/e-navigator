@@ -9,7 +9,11 @@ class User < ApplicationRecord
 
   private
     def calc_age
-      date_format = "%Y%m%d"
-      self.age = (Date.today.strftime(date_format).to_i - date_of_birth.strftime(date_format).to_i) / 10000
+      unless self.date_of_birth.nil? then
+        date_format = "%Y%m%d"
+        self.age = (Date.today.strftime(date_format).to_i - self.date_of_birth.strftime(date_format).to_i) / 10000
+      else
+        self.age = 0
+      end
     end
 end
