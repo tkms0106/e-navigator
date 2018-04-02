@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    unless current_user.update(user_params) then
+    unless current_user.update(user_params)
       flash[:alert] = 'Failed to update profile.'
     end
     redirect_to users_path
