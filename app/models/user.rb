@@ -6,6 +6,7 @@ class User < ApplicationRecord
   enum gender: [:male, :female, :other]
   before_validation :calc_age
   validates :age, numericality: { greater_than_or_equal_to: 0 }
+  has_many :interviews
 
   private
     def calc_age
