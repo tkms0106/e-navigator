@@ -1,2 +1,14 @@
 <h1>Interviews#index</h1>
-<p>Find me in app/views/interviews/index.html.erb</p>
+
+<ul class="interviews">
+  <% if @interviews.any? %>
+    <% @interviews.each do |interview| %>
+      <li>
+        <%= interview.scheduled_on %>
+        <%= interview.is_available %>
+      </li>
+    <% end %>
+  <% else %>
+    面接日程がありません。
+  <% end %>
+</ul>
