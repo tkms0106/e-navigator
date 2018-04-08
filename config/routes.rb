@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  get 'interviews/index'
-
-  get 'interviews/new'
-
-  get 'interviews/create'
-
+  resources :interviews, only: [:index, :new, :create]
   resources :users, only: [:index, :edit, :update]
   devise_for :users
   devise_scope :user do
