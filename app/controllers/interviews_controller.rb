@@ -4,6 +4,7 @@ class InterviewsController < ApplicationController
   end
 
   def new
+    @interview = Interview.new
   end
 
   def create
