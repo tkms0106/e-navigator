@@ -1,2 +1,7 @@
 <h1>Interviews#new</h1>
-<p>Find me in app/views/interviews/new.html.erb</p>
+
+<%= form_for(@interview) do |f| %>
+  <%= f.label '面接日程' %><br>
+  <%= f.datetime_field :scheduled_at %><br>
+ <%= f.submit "作成" %><br>
+<% end %>
