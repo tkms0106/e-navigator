@@ -1,23 +1,30 @@
 class InterviewsController < ApplicationController
   def index
-    @interviews = current_user.interviews
+    @user = set_user
+    @interviews = @user.interviews
   end
 
   def new
+    @user = set_user
     @interview = Interview.new
   end
 
   def create
-    @interview = current_user.interviews.build(interview_params)
+    @user = set_user
+    @interview = @user.interviews.build(interview_params)
     if @interview.save
       flash[:notice] = 'Suscessfully created.'
     else
       flash[:alert] = 'Failed to create a interview.'
     end
-    redirect_to interviews_path
+    redirect_to user_interviews_path
   end
 
   private
+
+    def set_user
+      user = User.find_by(id: params[:user_id])
+    end
 
     def interview_params
       params.require(:interview).permit(:scheduled_at)

@@ -1,7 +1,7 @@
 <h1>Interviews#new</h1>
 
-<%= form_for(@interview) do |f| %>
+<%= form_for @interview, url: user_interviews_path(@user.id) do |f| %>
   <%= f.label '面接日程' %><br>
   <%= f.datetime_field :scheduled_at %><br>
- <%= f.submit "作成" %><br>
+  <%= f.submit "作成" %><br>
 <% end %>
