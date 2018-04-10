@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :interviews, only: [:index, :new, :create]
-  resources :users, only: [:index, :edit, :update]
+  resources :users, only: [:index, :edit, :update] do
+    resources :interviews, only: [:index, :new, :create]
+  end
   devise_for :users
   devise_scope :user do
     authenticated :user do
