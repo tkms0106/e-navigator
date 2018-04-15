@@ -1,5 +1,6 @@
 class InterviewsController < ApplicationController
-  before_action :set_user
+  before_action :authenticate_user!
+  before_action :set_user, :correct_user
 
   def index
     @interviews = @user.interviews
@@ -21,11 +22,17 @@ class InterviewsController < ApplicationController
 
   private
 
-    def set_user
-      @user = User.find_by(id: params[:user_id])
-    end
-
     def interview_params
       params.require(:interview).permit(:scheduled_at)
+    end
+
+    def set_user
+      @user = User.find(params[:user_id])
+    end
+
+    def correct_user
+      return if @user == current_user
+      flash[:alert] = 'Only your own profile can be edited.'
+      redirect_to authenticated_root_path
     end
 end
