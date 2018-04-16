@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  enum gender: [:male, :female, :other]
+  enum gender: { not_known: 0, male: 1, female: 2, not_applicable: 9 }
   before_validation :calc_age
   validates :age, numericality: { greater_than_or_equal_to: 0 }
   has_many :interviews
