@@ -6,7 +6,7 @@
   <%= f.label '生年月日' %><br>
   <%= f.date_field :date_of_birth %><br>
   <%= f.label '性別' %><br>
-  <%= f.select :gender, User.genders.keys.to_a, {} %><br>
+  <%= f.select :gender, {'' => :not_known, '男性' => :male, '女性' => :female, 'その他'=> :not_applicable} %><br>
   <%= f.label '学校' %><br>
   <%= f.text_field :school %><br>
   <%= f.submit "プロフィールを更新" %><br>
