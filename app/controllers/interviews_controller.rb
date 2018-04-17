@@ -1,6 +1,7 @@
 class InterviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, :correct_user
+  before_action :set_interview, only: [:edit, :update, :destroy]
 
   def index
     @interviews = @user.interviews
@@ -43,5 +44,9 @@ class InterviewsController < ApplicationController
       return if @user == current_user
       flash[:alert] = 'Only your own profile can be edited.'
       redirect_to authenticated_root_path
+    end
+
+    def set_interview
+      @interview = @user.interviews.find(params[:id])
     end
 end
