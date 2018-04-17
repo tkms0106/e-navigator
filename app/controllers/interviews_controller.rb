@@ -9,6 +9,7 @@ class InterviewsController < ApplicationController
 
   def new
     @interview = Interview.new
+    @path = user_interviews_path(@user.id)
   end
 
   def create
@@ -22,10 +23,11 @@ class InterviewsController < ApplicationController
   end
 
   def edit
+    @path = user_interview_path(@user.id, @interview.id)
   end
 
   def update
-    if @interview.update(params[:scheduled_at])
+    if @interview.update(interview_params)
       flash[:notice] = 'Successfully updated.'
     else
       flash[:alert] = 'Failed to update the interview candidate date.'
