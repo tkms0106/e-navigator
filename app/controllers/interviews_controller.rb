@@ -4,7 +4,7 @@ class InterviewsController < ApplicationController
   before_action :set_interview, only: [:edit, :update, :destroy]
 
   def index
-    @interviews = @user.interviews
+    @interviews = @user.interviews.order(:scheduled_at)
   end
 
   def new
