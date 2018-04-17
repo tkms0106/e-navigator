@@ -20,6 +20,15 @@ class InterviewsController < ApplicationController
     redirect_to user_interviews_path
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
   private
 
     def interview_params
