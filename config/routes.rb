@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update] do
-    resources :interviews, only: [:index, :new, :create]
+    resources :interviews, only: [:index, :new, :create, :edit, :update, :destroy]
   end
   devise_for :users
   devise_scope :user do
