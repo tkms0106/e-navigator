@@ -16,7 +16,7 @@ class InterviewsController < ApplicationController
     if @interview.save
       flash[:notice] = 'Suscessfully created.'
     else
-      flash[:alert] = 'Failed to create a interview.'
+      flash[:alert] = 'Failed to create a interview candidate date and time.'
     end
     redirect_to user_interviews_path
   end
@@ -25,9 +25,21 @@ class InterviewsController < ApplicationController
   end
 
   def update
+    if @interview.update(params[:scheduled_at])
+      flash[:notice] = 'Successfully updated.'
+    else
+      flash[:alert] = 'Failed to update the interview candidate date.'
+    end
+    redirect_to user_interviews_path(@user.id)
   end
 
   def destroy
+    if @interview.destroy
+      flash[:notice] = 'Successfully destroyed.'
+    else
+      flash[:alert] = 'Failed to destroy the interview candidate date.'
+    end
+    redirect_to user_interviews_path(@user.id)
   end
 
   private
