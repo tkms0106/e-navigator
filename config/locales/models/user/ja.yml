@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        gender: 性別
+        date_of_birth: 生年月日
+        age: 年齢
+        school: 学校名
+      interview:
+        scheduled_at: 日程
+  enums:
+    user:
+      gender:
+        not_known: 無回答
+        male: 男性
+        female: 女性
+        not_applicable: その他
