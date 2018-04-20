@@ -56,7 +56,7 @@ class InterviewsController < ApplicationController
 
     def correct_user
       return if @user == current_user
-      flash[:alert] = 'Only your own profile can be edited.'
+      flash[:alert] = 'Only your own interviews can be accessed.'
       redirect_to authenticated_root_path
     end
 
