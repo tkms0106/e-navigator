@@ -5,7 +5,7 @@
     <% @interviews.each do |interview| %>
       <li>
         <%= interview.scheduled_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
-        <%= interview.is_available %>
+        <%= interview.is_available_i18n %>
         <%= link_to '編集', edit_user_interview_path(@user.id, interview.id) %>
         <%= link_to '削除', user_interview_path(@user.id, interview.id), method: :delete %>
       </li>
