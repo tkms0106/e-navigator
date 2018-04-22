@@ -1,6 +1,6 @@
 class InterviewsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_user, :correct_user
+  before_action :authenticate_user!, :set_user
+  before_action :correct_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_interview, only: [:edit, :update, :destroy]
 
   def index
