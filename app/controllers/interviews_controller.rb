@@ -14,7 +14,7 @@ class InterviewsController < ApplicationController
 
   def create
     @interview = @user.interviews.build(interview_params)
-    @interview.is_available = 'pending'
+    @interview.availability = 'pending'
     if @interview.save
       flash[:notice] = 'Suscessfully created.'
     else
