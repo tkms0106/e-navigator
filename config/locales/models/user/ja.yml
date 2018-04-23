@@ -18,7 +18,7 @@ ja:
         female: 女性
         not_applicable: その他
     interview:
-      is_available:
-        to_be_determined: 未定
+      availability:
+        pending: 未定
         approval: 承認
         disapproval: 不承認

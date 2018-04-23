@@ -19,8 +19,8 @@
           <td><%= user.gender %></td>
           <td><%= user.school %></td>
           <td>
-          <% if user.interviews.where(is_available: :approval).any? %>
-            <%= user.interviews.where(is_available: :approval).first.scheduled_at %>
+          <% if user.interviews.where(availability: :approval).any? %>
+            <%= user.interviews.where(availability: :approval).first.scheduled_at %>
           <% end %>
           </td>
           <td><%= link_to '面接一覧', user_interviews_path(user.id) %></td>
