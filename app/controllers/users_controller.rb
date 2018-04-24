@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :update]
+  before_action :set_user, :correct_user, only: [:edit, :update]
 
   def index
     @users = User.where.not(id: current_user.id)
@@ -22,11 +22,13 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :date_of_birth, :gender, :school)
     end
 
-    def correct_user
+    def set_user
       @user = User.find(params[:id])
-      unless @user == current_user
-        flash[:alert] = 'Only your own profile can be edited.'
-        redirect_to authenticated_root_path
-      end
+    end
+
+    def correct_user
+      return if @user == current_user
+      flash[:alert] = 'Only your own profile can be edited.'
+      redirect_to authenticated_root_path
     end
 end
