@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index, :edit, :update]
+  resources :users, only: [:index, :edit, :update] do
+    resources :interviews, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
   devise_for :users
   devise_scope :user do
     authenticated :user do
-      root 'users#index', as: :authenticated_root
+      root to: redirect('/users/'), as: :authenticated_root
     end
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      root to: redirect('/users/sign_in'), as: :unauthenticated_root
     end
   end
 end
