@@ -16,7 +16,7 @@
           <td><%= user.name %></td>
           <td><%= user.email %></td>
           <td><%= user.age %></td>
-          <td><%= user.gender %></td>
+          <td><%= user.gender_i18n %></td>
           <td><%= user.school %></td>
           <td>
           <% if user.interviews.where(availability: :approval).any? %>
