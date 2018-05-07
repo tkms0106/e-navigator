@@ -1,7 +1,7 @@
 class InterviewsController < ApplicationController
   before_action :authenticate_user!, :set_user
   before_action :correct_user, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_interview, only: [:edit, :update, :destroy]
+  before_action :set_interview, only: [:edit, :update, :destroy, :approve]
 
   def index
     @interviews = @user.interviews.order(:scheduled_at)
@@ -41,6 +41,15 @@ class InterviewsController < ApplicationController
       flash[:notice] = 'Successfully destroyed.'
     else
       flash[:alert] = 'Failed to destroy the interview candidate date.'
+    end
+    redirect_to user_interviews_path(@user.id)
+  end
+
+  def approve
+    if @interview.update(availability: :approval)
+      @user.interviews.where.not(id: @interview.id).update(availability: :disapproval)
+    else
+      flash[:alert] = 'Failed to approve.'
     end
     redirect_to user_interviews_path(@user.id)
   end
