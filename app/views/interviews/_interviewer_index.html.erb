@@ -1,0 +1,4 @@
+<% if interview.availability == 'pending' %>
+  <%= link_to '承認', "/users/#{user.id}/interviews/#{interview.id}/approve",
+  data: {confirm: "以下の日程を承認しますか？\n#{interview.scheduled_at.strftime('%Y年%m月%d日 %H:%M')}"} %>
+<% end %>
