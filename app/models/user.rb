@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   enum gender: { not_known: 0, male: 1, female: 2, not_applicable: 9 }
+  validates :date_of_birth, past: true
   before_save :calc_age
   has_many :interviews, dependent: :delete_all
 
