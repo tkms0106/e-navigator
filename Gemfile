@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise', '4.4.3'
+gem 'devise-i18n', '1.6.2'
 gem 'enum_help', '0.0.17'
 
 group :development, :test do
