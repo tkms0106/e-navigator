@@ -10,6 +10,9 @@ ja:
         school: 学校名
       interview:
         scheduled_at: 日程
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました。 %{errors}"
   enums:
     user:
       gender:
