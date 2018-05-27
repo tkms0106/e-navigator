@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def update
     unless @user.update(user_params)
-      flash[:alert] = 'Failed to update profile.'
+      flash[:alert] = 'プロフィールの更新に失敗しました。'
     end
     redirect_to users_path
   end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
     def correct_user
       return if @user == current_user
-      flash[:alert] = 'Only your own profile can be edited.'
+      flash[:alert] = 'あなたのユーザー情報ではありません。'
       redirect_to authenticated_root_path
     end
 end
