@@ -11,6 +11,11 @@ ja:
       interview:
         scheduled_at: 日程
     errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "は使用できません。"
       messages:
         record_invalid: "バリデーションに失敗しました。 %{errors}"
   enums:
