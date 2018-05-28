@@ -46,7 +46,7 @@ class InterviewsController < ApplicationController
   end
 
   def approve
-    if @interview.update(availability: :approval)
+    if @interview.approval!
       @user.interviews.where.not(id: @interview.id).update(availability: :disapproval)
     else
       flash[:alert] = '承認に失敗しました。'
