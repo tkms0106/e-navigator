@@ -15,7 +15,11 @@ ja:
         user:
           attributes:
             email:
+              blank: "が空白です。"
               taken: "は使用できません。"
+            password:
+              blank: "が空白です。"
+              too_short: "が短すぎます。"
       messages:
         record_invalid: "バリデーションに失敗しました。 %{errors}"
   enums:
