@@ -16,7 +16,7 @@ ja:
           attributes:
             email:
               blank: "が空白です。"
-              taken: "は使用できません。"
+              taken: "が使用不可能です。"
             password:
               blank: "が空白です。"
               too_short: "が短すぎます。"
