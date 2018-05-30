@@ -2,11 +2,31 @@
 
 <ul class="users">
   <% if @users.any? %>
-    <% @users.each do |user| %>
-      <li>
-        <%= user.email %>
-      </li>
-    <% end %>
+    <table>
+      <tr>
+        <th><%= t('activerecord.attributes.user.name') %></th>
+        <th><%= t('activerecord.attributes.user.email') %></th>
+        <th><%= t('activerecord.attributes.user.age') %></th>
+        <th><%= t('activerecord.attributes.user.gender') %></th>
+        <th><%= t('activerecord.attributes.user.school') %></th>
+        <th>面接日時</th>
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.age %></td>
+          <td><%= user.gender_i18n %></td>
+          <td><%= user.school %></td>
+          <td>
+          <% if user.interviews.approval.any? %>
+            <%= user.interviews.approval.first.scheduled_at.strftime('%Y年%m月%d日 %H:%M') %>
+          <% end %>
+          </td>
+          <td><%= link_to '面接一覧', user_interviews_path(user.id) %></td>
+        </tr>
+      <% end %>
+    </table>
   <% else %>
     あなたのほかにユーザーはいません。
   <% end %>

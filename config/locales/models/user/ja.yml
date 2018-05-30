@@ -1,0 +1,36 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        gender: 性別
+        date_of_birth: 生年月日
+        age: 年齢
+        school: 学校名
+      interview:
+        scheduled_at: 日程
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "が空白です。"
+              taken: "が使用不可能です。"
+            password:
+              blank: "が空白です。"
+              too_short: "が短すぎます。"
+      messages:
+        record_invalid: "バリデーションに失敗しました。 %{errors}"
+  enums:
+    user:
+      gender:
+        not_known: 無回答
+        male: 男性
+        female: 女性
+        not_applicable: その他
+    interview:
+      availability:
+        pending: 未定
+        approval: 承認
+        disapproval: 却下
