@@ -14,8 +14,10 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.approval_notification.subject
   #
-  def approval_notification(interviewee, interviewer)
+  def approval_notification(interviewee, interviewer, datetime)
+    @interviewee = interviewee
     @interviewer = interviewer
-    mail to: interviewer.email, subject: "面接日時が確定しました"
+    @datetime = datetime
+    mail to: [interviewee.email, interviewer.email], subject: "#{interviewee.name} さんの面接日時が確定しました"
   end
 end
