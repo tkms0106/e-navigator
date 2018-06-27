@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update] do
     resources :interviews, only: [:index, :new, :create, :edit, :update, :destroy]
     get '/interviews/:id/approve', to: 'interviews#approve'
+    post '/interviews/apply', to: 'interviews#apply'
   end
   devise_for :users
   devise_scope :user do
