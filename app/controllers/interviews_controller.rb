@@ -48,6 +48,7 @@ class InterviewsController < ApplicationController
   def approve
     if @interview.approval!
       @user.interviews.where.not(id: @interview.id).update(availability: :disapproval)
+      UserMailer.approval_notification(@user, current_user, @interview.scheduled_at).deliver_now
     else
       flash[:alert] = '承認に失敗しました。'
     end
