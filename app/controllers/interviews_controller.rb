@@ -54,6 +54,13 @@ class InterviewsController < ApplicationController
     redirect_to user_interviews_path(@user.id)
   end
 
+  def apply
+    params.require(:user).permit(:id)
+    interviewer = User.find(params[:user][:id])
+    UserMailer.approval_request(@user, interviewer).deliver_now
+    redirect_to user_interviews_path(@user.id)
+  end
+
   private
 
     def interview_params
