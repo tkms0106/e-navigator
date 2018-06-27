@@ -9,6 +9,6 @@ class UserMailerPreview < ActionMailer::Preview
   def approval_notification
     user = User.first
     another_user = User.second
-    UserMailer.approval_notification(user, another_user)
+    UserMailer.approval_notification(user, another_user, Time.now)
   end
 end
