@@ -23,6 +23,6 @@
 
   <%= form_tag "/users/#{@user.id}/interviews/apply", method: :post do %>
     <%= collection_select(:user, :id, User.where.not(id: @user.id), :id, :email) %>
-    <%= submit_tag '送信' %>
+    <%= submit_tag '承認依頼' %>
   <% end %>
 <%end%>
