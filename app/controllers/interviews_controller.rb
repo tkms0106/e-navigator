@@ -1,6 +1,6 @@
 class InterviewsController < ApplicationController
   before_action :authenticate_user!, :set_user
-  before_action :correct_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:new, :create, :edit, :update, :destroy, :apply]
   before_action :set_interview, only: [:edit, :update, :destroy, :approve]
 
   def index
@@ -56,9 +56,13 @@ class InterviewsController < ApplicationController
   end
 
   def apply
-    params.require(:user).permit(:id)
-    interviewer = User.find(params[:user][:id])
-    UserMailer.approval_request(@user, interviewer).deliver_now
+    if @user.interviews.count > 0
+      interviewer = User.find(apply_params[:id])
+      UserMailer.approval_request(@user, interviewer).deliver_now
+      flash[:notice] = '承認依頼メールを送信しました。'
+    else
+      flash[:alert] = 'メールは送信されませんでした。面接希望日程を作成してください。'
+    end
     redirect_to user_interviews_path(@user.id)
   end
 
@@ -80,5 +84,9 @@ class InterviewsController < ApplicationController
 
     def set_interview
       @interview = @user.interviews.find(params[:id])
+    end
+
+    def apply_params
+      params.require(:user).permit(:id)
     end
 end
