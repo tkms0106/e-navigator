@@ -46,9 +46,12 @@ class InterviewsController < ApplicationController
   end
 
   def approve
-    if @interview.approval!
+    if current_user.name.blank?
+      flash[:alert] = '承認者の名前が設定されている必要があります。'
+    elsif @interview.approval!
       @user.interviews.where.not(id: @interview.id).update(availability: :disapproval)
       UserMailer.approval_notification(@user, current_user, @interview.scheduled_at).deliver_now
+          flash[:notice] = '承認通知メールを送信しました。'
     else
       flash[:alert] = '承認に失敗しました。'
     end
@@ -56,7 +59,9 @@ class InterviewsController < ApplicationController
   end
 
   def apply
-    if @user.interviews.count > 0
+    if @user.name.blank?
+      flash[:alert] = '自分の名前が設定されている必要があります。'
+    elsif @user.interviews.count > 0
       interviewer = User.find(apply_params[:id])
       UserMailer.approval_request(@user, interviewer).deliver_now
       flash[:notice] = '承認依頼メールを送信しました。'
