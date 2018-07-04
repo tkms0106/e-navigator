@@ -5,6 +5,7 @@ class InterviewsController < ApplicationController
 
   def index
     @interviews = @user.interviews.order(:scheduled_at)
+    @other_users = User.where.not(id: @user.id)
   end
 
   def new
