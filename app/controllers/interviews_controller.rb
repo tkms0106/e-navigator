@@ -51,7 +51,7 @@ class InterviewsController < ApplicationController
       flash[:alert] = '承認者の名前が設定されている必要があります。'
     elsif @interview.approval!
       @user.interviews.where.not(id: @interview.id).update(availability: :disapproval)
-      UserMailer.approval_notification(@user, current_user, @interview.scheduled_at).deliver_now
+      UserMailer.interview_date_decision_notification(@user, current_user, @interview.scheduled_at).deliver_now
           flash[:notice] = '承認通知メールを送信しました。'
     else
       flash[:alert] = '承認に失敗しました。'

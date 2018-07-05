@@ -12,9 +12,9 @@ class UserMailer < ApplicationMailer
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
-  #   en.user_mailer.approval_notification.subject
+  #   en.user_mailer.interview_date_decision_notification.subject
   #
-  def approval_notification(interviewee, interviewer, datetime)
+  def interview_date_decision_notification(interviewee, interviewer, datetime)
     @interviewee = interviewee
     @interviewer = interviewer
     @datetime = datetime
