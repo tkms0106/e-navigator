@@ -93,6 +93,6 @@ class InterviewsController < ApplicationController
     end
 
     def apply_params
-      params.require(:user).permit(:id)
+      params.require(:interviewer).permit(:id)
     end
 end
