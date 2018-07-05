@@ -52,7 +52,7 @@ class InterviewsController < ApplicationController
     elsif @interview.approval!
       @user.interviews.where.not(id: @interview.id).update(availability: :disapproval)
       UserMailer.interview_date_decision_notification(@user, current_user, @interview.scheduled_at).deliver_now
-          flash[:notice] = '承認通知メールを送信しました。'
+      flash[:notice] = '承認通知メールを送信しました。'
     else
       flash[:alert] = '承認に失敗しました。'
     end
