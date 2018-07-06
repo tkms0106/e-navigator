@@ -1,0 +1,4 @@
+<%= form_tag "/users/#{@user.id}/interviews/apply", method: :post do %>
+  <%= select("interviewer", "id", @other_users.collect  { |u| [u.email, u.id] } ) %>
+  <%= submit_tag '承認依頼', data: {confirm: "メールを送信してよろしいですか？"} %>
+<% end %>
