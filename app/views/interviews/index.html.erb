@@ -21,8 +21,7 @@
 <% if @user == current_user %>
   <%= link_to '面接日程作成', new_user_interview_path(@user.id) %>
 
-  <%= form_tag "/users/#{@user.id}/interviews/apply", method: :post do %>
-    <%= select("interviewer", "id", @other_users.collect  { |u| [u.email, u.id] } ) %>
-    <%= submit_tag '承認依頼', data: {confirm: "メールを送信してよろしいですか？"} %>
+  <% if @other_users.any? %>
+    <%= render 'approval_request_form' %>
   <% end %>
 <%end%>
