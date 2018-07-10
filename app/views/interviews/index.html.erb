@@ -20,4 +20,8 @@
 
 <% if @user == current_user %>
   <%= link_to '面接日程作成', new_user_interview_path(@user.id) %>
+
+  <% if @other_users.any? %>
+    <%= render 'approval_request_form' %>
+  <% end %>
 <%end%>
